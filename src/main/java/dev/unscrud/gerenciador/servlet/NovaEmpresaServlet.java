@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class NovaEmpresaServlet extends HttpServlet {
 
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("Cadastrando nova emrpesa");
         String name = req.getParameter("nome");
         processRequest(req, resp, name);
