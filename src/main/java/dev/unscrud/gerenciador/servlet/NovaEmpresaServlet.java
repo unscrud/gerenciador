@@ -14,8 +14,14 @@ public class NovaEmpresaServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("Cadastrando nova emrpesa");
-        String name = req.getParameter("nome");
-        processRequest(req, resp, name);
+        String nome = req.getParameter("nome");
+        Empresa empresa = new Empresa();
+        empresa.setNome(nome);
+        
+        Banco banco = new Banco();
+        banco.adiciona(empresa);
+        
+        processRequest(req, resp, nome);
     }
     
     /**
