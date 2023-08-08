@@ -7,7 +7,7 @@
     </head>
     <body>
         <h1>Nova Empresa</h1>
-        <p> A empresa <%= request.getParameter("nome") %> foi criada com sucesso!</p>
+        <p> A empresa ${nome} foi criada com sucesso!</p>
                 
     </body>
 </html>
