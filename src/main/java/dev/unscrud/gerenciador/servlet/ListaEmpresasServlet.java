@@ -5,7 +5,6 @@
 package dev.unscrud.gerenciador.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,30 +31,15 @@ public class ListaEmpresasServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ListaEmpresasServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ListaEmpresasServlet at " + request.getContextPath() + "</h1>");
-            
-            Banco banco = new Banco();
-            List<Empresa> empresas = banco.getEmpresas();
-            if (empresas.isEmpty()) {
-                out.println("<p>Não existem empresas a serem exibidas</p>");
-            } else {
-                out.println("<ol>");
-                for( Empresa empresa : empresas){
-                    out.println("<li>"+empresa.getNome()+"</li>");
-                }
-                out.println("</ol>");
-            }
-            out.println("</body>");
-            out.println("</html>");
-        }
+        
+        Banco banco = new Banco();
+        List<Empresa> empresas = banco.getEmpresas();
+        
+        request.setAttribute("empresas", empresas);
+        
+        request
+            .getRequestDispatcher("/listaEmpresas.jsp")
+            .forward(request, response);
     }
 
     /**
