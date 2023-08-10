@@ -3,11 +3,12 @@ package dev.unscrud.gerenciador.servlet;
 import java.util.Date;
 
 public class Empresa {
-    private int id;
+    private Integer id;
     private String nome;
     private Date dataAbertura;
 
-    public Empresa(String nome, Date dataAbertura) {
+    public Empresa(Integer id, String nome, Date dataAbertura) {
+        this.id = id;
         this.nome = nome;
         this.dataAbertura = dataAbertura == null ? new Date() : dataAbertura;
     }
