@@ -1,5 +1,6 @@
 <%@page import="java.util.List"%>
 <%@page import="dev.unscrud.gerenciador.servlet.Empresa"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -9,25 +10,16 @@
     </head>
     <body>
         <h1>Lista de Empresas</h1>
-        <%
-            List<Empresa> empresas = (List<Empresa>) request.getAttribute("empresas");
-            if (empresas == null || empresas.isEmpty()) {
-        %>
-                <%= "<p>Não existem empresas a serem exibidas</p>" %>
-        <%
-            } else { 
-        %>
-        <ol>
-            <%
-                for( Empresa empresa : empresas){
-            %>
-            <li> <%= empresa.getNome() %></li>
-            <%
-                }
-            %>
-        </ol>
-        <%
-            }
-        %>
+        <c:if test="${empty empresas}">
+            <p>Não existem empresas a serem exibidas</p>
+        </c:if>
+        
+        <c:if test="${not empty empresas}">
+            <ul>
+                <c:forEach items="${empresas}" var="empresa">
+                    <li>${empresa.nome}</li>
+                </c:forEach>
+            </ul>
+        </c:if>
     </body>
 </html>
