@@ -36,8 +36,10 @@ public class NovaEmpresaServlet extends HttpServlet {
         request.setAttribute("data", empresa.getDataAbertura());
 
         response.setContentType("text/html;charset=UTF-8");
-        request
-            .getRequestDispatcher("/empresas")
-            .forward(request, response);
+        
+        response.sendRedirect("empresas");
+//        request
+//            .getRequestDispatcher("/empresas")
+//            .forward(request, response);
     }
 }
