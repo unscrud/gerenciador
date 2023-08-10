@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Banco {
-    private static List<Empresa> empresas = new ArrayList<>();
+    private static final List<Empresa> empresas = new ArrayList<>();
+    private static Integer chaveSequencial = 1;
 
     static {
-        empresas.add(new Empresa("Caelum", null));
-        empresas.add(new Empresa("Alura", null));
-        empresas.add(new Empresa("Google", null));
-        empresas.add(new Empresa("Microsoft", null));
+        Banco.empresas.add(new Empresa(Banco.chaveSequencial++, "Caelum", null));
+        Banco.empresas.add(new Empresa(Banco.chaveSequencial++, "Alura", null));
+        Banco.empresas.add(new Empresa(Banco.chaveSequencial++, "Google", null));
+        Banco.empresas.add(new Empresa(Banco.chaveSequencial++, "Microsoft", null));
     }
     
     public void adiciona(Empresa empresa) {
