@@ -1,6 +1,7 @@
 package dev.unscrud.gerenciador.servlet;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 class Banco {
@@ -14,8 +15,8 @@ class Banco {
         Banco.empresas.add(new Empresa(Banco.chaveSequencial++, "Microsoft", null));
     }
     
-    public void adiciona(Empresa empresa) {
-        empresas.add(empresa);
+    public void adiciona(String nomeEmpresa, Date dataAbertura) {
+        empresas.add(new Empresa(Banco.chaveSequencial++, nomeEmpresa, dataAbertura));
     }
     
     public List<Empresa> getEmpresas() {
