@@ -7,9 +7,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Empresas</title>
     </head>
     <body>
+        <c:if test="${not empty nome}">
+            <h1>Nova Empresa</h1>
+            <p> A empresa ${nome} foi criada com sucesso!</p>
+        </c:if>
+        
         <h1>Lista de Empresas</h1>
         <c:if test="${empty empresas}">
             <p>Não existem empresas a serem exibidas</p>
