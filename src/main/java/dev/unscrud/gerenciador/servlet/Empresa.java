@@ -5,10 +5,11 @@ import java.util.Date;
 public class Empresa {
     private int id;
     private String nome;
-    private Date dataAbertura = new Date();
+    private Date dataAbertura;
 
-    public Empresa(String nome) {
+    public Empresa(String nome, Date dataAbertura) {
         this.nome = nome;
+        this.dataAbertura = dataAbertura == null ? new Date() : dataAbertura;
     }
 
     public int getId() {
