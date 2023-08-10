@@ -37,7 +37,7 @@ public class NovaEmpresaServlet extends HttpServlet {
 
         response.setContentType("text/html;charset=UTF-8");
         request
-            .getRequestDispatcher("/novaEmpresaCriada.jsp")
+            .getRequestDispatcher("/empresas")
             .forward(request, response);
     }
 }
