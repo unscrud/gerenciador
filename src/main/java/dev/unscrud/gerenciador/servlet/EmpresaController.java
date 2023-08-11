@@ -36,8 +36,7 @@ public class EmpresaController extends HttpServlet {
                 
                 break;
             case CRIAR:
-                System.out.println("Vai criar");
-                
+                empresaServico.criar(request, response);
                 break;
             case REMOVER:
                 System.out.println("Vai remover");
