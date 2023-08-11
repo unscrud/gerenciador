@@ -20,7 +20,7 @@ public class BuscaEmpresaServlet extends HttpServlet {
         req.setAttribute("empresa", empresa);
         req.setAttribute("dataFormatada", empresa.getDataAberturaFormatada());
         
-        req.getRequestDispatcher("/formNovaEmpresa.jsp")
+        req.getRequestDispatcher("/formEmpresa.jsp")
             .forward(req, resp);
     }
 }
