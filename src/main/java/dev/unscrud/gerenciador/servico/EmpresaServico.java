@@ -49,6 +49,6 @@ public class EmpresaServico {
         request.setAttribute("data", dataAbertura);
 
         response.setContentType("text/html;charset=UTF-8");
-        response.sendRedirect("empresas");
+        response.sendRedirect("empresas?acao=listar");
     }
 }
