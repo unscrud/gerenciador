@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import dev.unscrud.gerenciador.modelo.Banco;
 
 @WebServlet(name = "RemoveEmpresaServlet", urlPatterns = {"/removeEmpresa"})
 public class RemoveEmpresaServlet extends HttpServlet {

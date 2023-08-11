@@ -11,6 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import dev.unscrud.gerenciador.modelo.Banco;
+import dev.unscrud.gerenciador.modelo.Empresa;
 
 @WebServlet(name = "NovaEmpresaServlet", urlPatterns = {"/novaEmpresa"})
 public class NovaEmpresaServlet extends HttpServlet {
