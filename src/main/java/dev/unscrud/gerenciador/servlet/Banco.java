@@ -3,6 +3,7 @@ package dev.unscrud.gerenciador.servlet;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.function.Predicate;
 
 class Banco {
     private static final List<Empresa> empresas = new ArrayList<>();
@@ -21,5 +22,10 @@ class Banco {
     
     public List<Empresa> getEmpresas() {
         return Banco.empresas;
+    }
+
+    void remove(Integer id) {
+        Predicate<Empresa> condicao = empresa -> empresa.getId() == id;
+        Banco.empresas.removeIf(condicao);
     }
 }
