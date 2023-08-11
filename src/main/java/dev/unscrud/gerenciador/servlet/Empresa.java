@@ -1,6 +1,5 @@
 package dev.unscrud.gerenciador.servlet;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Empresa {
@@ -36,9 +35,5 @@ public class Empresa {
 
     public void setDataAbertura(Date dataAbertura) {
         this.dataAbertura = dataAbertura;
-    }
-
-    public String getDataAberturaFormatada() {
-        return new SimpleDateFormat("yyyy-MM-dd").format(dataAbertura);
     }
 }
