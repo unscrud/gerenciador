@@ -2,7 +2,6 @@ package dev.unscrud.gerenciador.servico;
 
 import dev.unscrud.gerenciador.modelo.Banco;
 import dev.unscrud.gerenciador.modelo.Empresa;
-import dev.unscrud.gerenciador.servlet.NovaEmpresaServlet;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,7 +28,7 @@ public class EmpresaServico {
             .forward(request, response);
     }
     
-    public void listar(HttpServletRequest request, HttpServletResponse response) 
+    public void criar(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         String nomeEmpresa = request.getParameter("nome");
         Date dataAbertura = null;
@@ -38,7 +37,7 @@ public class EmpresaServico {
             dataAbertura = new SimpleDateFormat("yyyy-MM-dd")
                     .parse(request.getParameter("dataAbertura"));
         } catch (ParseException ex) {
-            Logger.getLogger(NovaEmpresaServlet.class.getName())
+            Logger.getLogger(EmpresaServico.class.getName())
                     .log(Level.SEVERE, null, ex);
             throw  new ServletException(ex);
         }
