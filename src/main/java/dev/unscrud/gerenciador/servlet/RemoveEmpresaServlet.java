@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "RemoveEmpresaServlet", urlPatterns = {"/removeEmpresa"})
 public class RemoveEmpresaServlet extends HttpServlet {
 @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer id = Integer.valueOf(req.getParameter("idDaEmpresa"));
         
         Banco banco = new Banco();
