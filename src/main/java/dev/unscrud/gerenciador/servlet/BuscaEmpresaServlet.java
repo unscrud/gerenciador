@@ -18,7 +18,6 @@ public class BuscaEmpresaServlet extends HttpServlet {
         Empresa empresa = banco.buscaEmpresaPor(id);
 
         req.setAttribute("empresa", empresa);
-        req.setAttribute("dataFormatada", empresa.getDataAberturaFormatada());
         
         req.getRequestDispatcher("/formEmpresa.jsp")
             .forward(req, resp);
