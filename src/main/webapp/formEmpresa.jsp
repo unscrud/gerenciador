@@ -2,7 +2,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <c:url value="/novaEmpresa" var="linkServletNovaEmpresa" />
 <c:url value="/editaEmpresa" var="linkServletEditaEmpresa" />
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<fmt:formatDate var="dataFormatada" value="${empresa.dataAbertura}" pattern="yyyy-MM-dd" />
 <!DOCTYPE html>
 <html>
     <head>
