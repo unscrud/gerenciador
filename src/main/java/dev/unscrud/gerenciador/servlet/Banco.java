@@ -28,4 +28,11 @@ class Banco {
         Predicate<Empresa> condicao = empresa -> empresa.getId() == id;
         Banco.empresas.removeIf(condicao);
     }
+
+    Empresa buscaEmpresaPor(Integer id) {
+        return Banco.empresas.stream()
+                .filter(e -> e.getId() == id)
+                .findFirst()
+                .orElse(null);
+    }
 }
