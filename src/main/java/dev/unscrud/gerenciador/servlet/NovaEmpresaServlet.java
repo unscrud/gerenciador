@@ -16,27 +16,28 @@ import javax.servlet.http.HttpServletResponse;
 public class NovaEmpresaServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
         System.out.println("Cadastrando nova emrpesa");
-        String nome = request.getParameter("nome");
+        String nomeEmpresa = request.getParameter("nome");
         Date dataAbertura = null;
         
         try {
-            dataAbertura = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataAbertura"));
+            dataAbertura = new SimpleDateFormat("yyyy-MM-dd")
+                    .parse(request.getParameter("dataAbertura"));
         } catch (ParseException ex) {
-            Logger.getLogger(NovaEmpresaServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NovaEmpresaServlet.class.getName())
+                    .log(Level.SEVERE, null, ex);
             throw  new ServletException(ex);
         }
-        
-        Empresa empresa = new Empresa(nome, dataAbertura);
 
         Banco banco = new Banco();
-        banco.adiciona(empresa);
-        request.setAttribute("nome", empresa.getNome());
-        request.setAttribute("data", empresa.getDataAbertura());
+        banco.adiciona(nomeEmpresa, dataAbertura);
+        
+        request.setAttribute("nome", nomeEmpresa);
+        request.setAttribute("data", dataAbertura);
 
         response.setContentType("text/html;charset=UTF-8");
-        
         response.sendRedirect("empresas");
 //        request
 //            .getRequestDispatcher("/empresas")
