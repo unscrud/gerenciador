@@ -1,5 +1,5 @@
 <%@page import="java.util.List"%>
-<%@page import="dev.unscrud.gerenciador.servlet.Empresa"%>
+<%@page import="dev.unscrud.gerenciador.modelo.Empresa"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:url value="/removeEmpresa" var="remover" />
