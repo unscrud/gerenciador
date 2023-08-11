@@ -2,6 +2,8 @@
 <%@page import="dev.unscrud.gerenciador.servlet.Empresa"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<c:url value="/removeEmpresa" var="remover" />
+<c:url value="/editarEmpresa" var="remover" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,6 +32,8 @@
                             value="${empresa.dataAbertura}"
                             pattern="dd/MM/yyyy"
                         />
+                        &nbsp;-&nbsp; <a href="${editar}?idDaEmpresa=${empresa.id}">editar</a>
+                        &nbsp;-&nbsp; <a href="${remover}?idDaEmpresa=${empresa.id}">remover</a>
                     </li>
                 </c:forEach>
             </ul>
