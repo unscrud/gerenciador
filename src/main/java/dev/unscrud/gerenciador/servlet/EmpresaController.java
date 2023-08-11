@@ -29,18 +29,15 @@ public class EmpresaController extends HttpServlet {
                 break;
             case BUSCAR:
                 System.out.println("Vai buscar");
-                
                 break;
             case EDITAR:
                 System.out.println("Vai editar");
-                
                 break;
             case CRIAR:
                 empresaServico.criar(request, response);
                 break;
             case REMOVER:
                 System.out.println("Vai remover");
-                
                 break;
             default:
                 throw new AssertionError();
