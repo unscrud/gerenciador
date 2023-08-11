@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import dev.unscrud.gerenciador.modelo.Banco;
-import dev.unscrud.gerenciador.modelo.Empresa;
 
 @WebServlet(name = "NovaEmpresaServlet", urlPatterns = {"/novaEmpresa"})
 public class NovaEmpresaServlet extends HttpServlet {
@@ -41,8 +40,5 @@ public class NovaEmpresaServlet extends HttpServlet {
 
         response.setContentType("text/html;charset=UTF-8");
         response.sendRedirect("empresas");
-//        request
-//            .getRequestDispatcher("/empresas")
-//            .forward(request, response);
     }
 }
