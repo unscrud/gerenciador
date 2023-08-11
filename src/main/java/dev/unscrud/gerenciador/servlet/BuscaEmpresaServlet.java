@@ -17,11 +17,10 @@ public class BuscaEmpresaServlet extends HttpServlet {
         Banco banco = new Banco();
         Empresa empresa = banco.buscaEmpresaPor(id);
 
-        req.setAttribute("id", empresa.getId());
-        req.setAttribute("nome", empresa.getNome());
-        req.setAttribute("data", empresa.getDataAbertura());
+        req.setAttribute("empresa", empresa);
+        req.setAttribute("dataFormatada", empresa.getDataAberturaFormatada());
         
-        resp.setContentType("text/html;charset=UTF-8");
-        resp.sendRedirect("formNovaEmpresa.jsp");
+        req.getRequestDispatcher("/formNovaEmpresa.jsp")
+            .forward(req, resp);
     }
 }
