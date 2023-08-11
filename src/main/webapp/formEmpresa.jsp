@@ -22,7 +22,7 @@
             method="post"
         >
             <c:if test="${not empty empresa}">
-                <input type="hidden" name="id" value="${id}" />
+                <input type="hidden" name="id" value="${empresa.id}" />
             </c:if>
 
             <label for="nome">Nome da Empresa</label>
