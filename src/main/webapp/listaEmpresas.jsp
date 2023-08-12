@@ -32,8 +32,8 @@
                             value="${empresa.dataAbertura}"
                             pattern="dd/MM/yyyy"
                         />
-                        &nbsp;-&nbsp; <a href="${editar}?idDaEmpresa=${empresa.id}">editar</a>
-                        &nbsp;-&nbsp; <a href="${remover}?idDaEmpresa=${empresa.id}">remover</a>
+                        &nbsp;-&nbsp; <a href="${editar}&idDaEmpresa=${empresa.id}">editar</a>
+                        &nbsp;-&nbsp; <a href="${remover}&idDaEmpresa=${empresa.id}">remover</a>
                     </li>
                 </c:forEach>
             </ul>
