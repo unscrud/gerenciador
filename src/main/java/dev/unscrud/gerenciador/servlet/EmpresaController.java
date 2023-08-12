@@ -1,7 +1,10 @@
 package dev.unscrud.gerenciador.servlet;
 
-import dev.unscrud.gerenciador.servico.EmpresaServico;
+import dev.unscrud.gerenciador.acao.Acao;
+import dev.unscrud.gerenciador.util.Constantes;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,42 +13,18 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "empresas", urlPatterns = {"/empresas"})
 public class EmpresaController extends HttpServlet {
-    private enum TipoAcao {
-        LISTAR, BUSCAR, EDITAR, CRIAR, REMOVER, CADASTRAR;
-        
-    }
-    
-    
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        TipoAcao acao = TipoAcao.valueOf( request.getParameter("acao").toUpperCase() );
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String parametroAcao = request.getParameter("acao");
+        String nomeDaClasse = Constantes.ACOES_EMPRESAS + parametroAcao;
         
-        EmpresaServico empresaServico = new EmpresaServico();
-        
-        switch (acao) {
-            case LISTAR:
-                empresaServico.listar(request, response);
-                break;
-            case BUSCAR:
-                empresaServico.buscar(request, response);
-                break;
-            case EDITAR:
-                empresaServico.editar(request, response);
-                break;
-            case CRIAR:
-                empresaServico.criar(request, response);
-                break;
-            case REMOVER:
-                empresaServico.remover(request, response);
-                break;
-            case CADASTRAR:
-                empresaServico.cadastrar(request, response);
-                break;
-            default:
-                throw new AssertionError();
+        try {
+            Class classe = Class.forName(nomeDaClasse);
+            Object obj = classe.newInstance();
+            Acao acao = (Acao) obj;
+            acao.executar(request, response);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+            Logger.getLogger(EmpresaController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
 }
