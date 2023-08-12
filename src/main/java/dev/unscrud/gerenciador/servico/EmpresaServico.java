@@ -45,7 +45,6 @@ public class EmpresaServico {
         Banco banco = new Banco();
         banco.adiciona(nomeEmpresa, dataAbertura);
 
-        response.setContentType("text/html;charset=UTF-8");
         response.sendRedirect("empresas?acao=listar&empresaCriada="+nomeEmpresa);
     }
     
@@ -81,7 +80,6 @@ public class EmpresaServico {
         empresa.setNome(nome);
         empresa.setDataAbertura(dataAbertura);
         
-        response.setContentType("text/html;charset=UTF-8");
         response.sendRedirect("empresas?acao=listar&empresaEditada="+empresa.getNome());
     }
 
@@ -92,7 +90,6 @@ public class EmpresaServico {
         Banco banco = new Banco();
         banco.remove(id);
         
-        response.setContentType("text/html;charset=UTF-8");
-        response.sendRedirect("empresas");
+        response.sendRedirect("empresas?acao=listar");
     }
 }
