@@ -44,12 +44,9 @@ public class EmpresaServico {
 
         Banco banco = new Banco();
         banco.adiciona(nomeEmpresa, dataAbertura);
-        
-        request.setAttribute("nome", nomeEmpresa);
-        request.setAttribute("data", dataAbertura);
 
         response.setContentType("text/html;charset=UTF-8");
-        response.sendRedirect("empresas?acao=listar");
+        response.sendRedirect("empresas?acao=listar&empresaCriada="+nomeEmpresa);
     }
     
     public void buscar(HttpServletRequest request, HttpServletResponse response) 

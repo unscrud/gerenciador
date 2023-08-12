@@ -17,9 +17,9 @@
             <p> A empresa ${param.empresaEditada} foi modificada com sucesso!</p>
         </c:if>
         
-        <c:if test="${not empty nome}">
+        <c:if test="${not empty param.empresaCriada}">
             <h1>Nova Empresa</h1>
-            <p> A empresa ${nome} foi criada com sucesso!</p>
+            <p> A empresa ${param.empresaCriada} foi criada com sucesso!</p>
         </c:if>
         
         <h1>Lista de Empresas</h1>
