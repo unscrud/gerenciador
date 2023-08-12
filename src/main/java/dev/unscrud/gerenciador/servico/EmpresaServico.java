@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class EmpresaServico {
+    
+    private final String PREFIXO = "WEB-INF/view/";
 
     public void listar(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
@@ -24,7 +26,7 @@ public class EmpresaServico {
         request.setAttribute("empresas", empresas);
         
         request
-            .getRequestDispatcher("/listaEmpresas.jsp")
+            .getRequestDispatcher(PREFIXO + "listaEmpresas.jsp")
             .forward(request, response);
     }
     
@@ -57,7 +59,7 @@ public class EmpresaServico {
 
         request.setAttribute("empresa", empresa);
         
-        request.getRequestDispatcher("/formEmpresa.jsp")
+        request.getRequestDispatcher(PREFIXO + "formEmpresa.jsp")
             .forward(request, response);
     }
     
