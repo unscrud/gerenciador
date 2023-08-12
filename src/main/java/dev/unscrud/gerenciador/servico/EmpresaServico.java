@@ -84,4 +84,14 @@ public class EmpresaServico {
         response.setContentType("text/html;charset=UTF-8");
         response.sendRedirect("empresas?acao=listar&empresaEditada="+empresa.getNome());
     }
+    public void remover(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        Integer id = Integer.valueOf(request.getParameter("idDaEmpresa"));
+        
+        Banco banco = new Banco();
+        banco.remove(id);
+        
+        response.setContentType("text/html;charset=UTF-8");
+        response.sendRedirect("empresas");
+    }
 }

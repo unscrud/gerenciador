@@ -37,7 +37,7 @@ public class EmpresaController extends HttpServlet {
                 empresaServico.criar(request, response);
                 break;
             case REMOVER:
-                System.out.println("Vai remover");
+                empresaServico.remover(request, response);
                 break;
             default:
                 throw new AssertionError();
