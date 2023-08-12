@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "empresas", urlPatterns = {"/empresas"})
 public class EmpresaController extends HttpServlet {
     private enum TipoAcao {
-        LISTAR, BUSCAR, EDITAR, CRIAR, REMOVER;
+        LISTAR, BUSCAR, EDITAR, CRIAR, REMOVER, CADASTRAR;
         
     }
     
@@ -38,6 +38,9 @@ public class EmpresaController extends HttpServlet {
                 break;
             case REMOVER:
                 empresaServico.remover(request, response);
+                break;
+            case CADASTRAR:
+                empresaServico.cadastrar(request, response);
                 break;
             default:
                 throw new AssertionError();

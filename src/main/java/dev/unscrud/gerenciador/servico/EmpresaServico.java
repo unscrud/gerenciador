@@ -94,4 +94,10 @@ public class EmpresaServico {
         
         response.sendRedirect("empresas?acao=listar");
     }
+    
+    public void cadastrar(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        request.getRequestDispatcher(PREFIXO + "formEmpresa.jsp")
+            .forward(request, response);
+    }
 }
