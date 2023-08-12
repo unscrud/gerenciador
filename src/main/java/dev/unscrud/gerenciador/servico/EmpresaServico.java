@@ -51,4 +51,17 @@ public class EmpresaServico {
         response.setContentType("text/html;charset=UTF-8");
         response.sendRedirect("empresas?acao=listar");
     }
+    
+    public void buscar(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        Integer id = Integer.valueOf(request.getParameter("idDaEmpresa"));
+        
+        Banco banco = new Banco();
+        Empresa empresa = banco.buscaEmpresaPor(id);
+
+        request.setAttribute("empresa", empresa);
+        
+        request.getRequestDispatcher("/formEmpresa.jsp")
+            .forward(request, response);
+    }
 }
