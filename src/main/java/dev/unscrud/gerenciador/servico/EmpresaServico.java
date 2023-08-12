@@ -64,4 +64,27 @@ public class EmpresaServico {
         request.getRequestDispatcher("/formEmpresa.jsp")
             .forward(request, response);
     }
+    
+    public void editar(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        Integer id = Integer.valueOf(request.getParameter("id"));
+        String nome = request.getParameter("nome");
+        Date dataAbertura = null;
+        
+        try {
+            dataAbertura = new SimpleDateFormat("yyyy-MM-dd")
+                    .parse(request.getParameter("dataAbertura"));
+        } catch (ParseException ex) {
+            Logger.getLogger(EmpresaServico.class.getName())
+                    .log(Level.SEVERE, null, ex);
+        }
+        
+        Banco banco = new Banco();
+        Empresa empresa = banco.buscaEmpresaPor(id);
+        empresa.setNome(nome);
+        empresa.setDataAbertura(dataAbertura);
+        
+        response.setContentType("text/html;charset=UTF-8");
+        response.sendRedirect("empresas?acao=listar&empresaEditada="+empresa.getNome());
+    }
 }

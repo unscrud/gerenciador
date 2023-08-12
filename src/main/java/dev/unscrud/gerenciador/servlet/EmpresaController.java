@@ -31,7 +31,7 @@ public class EmpresaController extends HttpServlet {
                 empresaServico.buscar(request, response);
                 break;
             case EDITAR:
-                System.out.println("Vai editar");
+                empresaServico.editar(request, response);
                 break;
             case CRIAR:
                 empresaServico.criar(request, response);

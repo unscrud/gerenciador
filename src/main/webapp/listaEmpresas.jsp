@@ -12,6 +12,11 @@
         <title>Empresas</title>
     </head>
     <body>
+        <c:if test="${not empty param.empresaEditada}">
+            <h1>Editar Empresa</h1>
+            <p> A empresa ${param.empresaEditada} foi modificada com sucesso!</p>
+        </c:if>
+        
         <c:if test="${not empty nome}">
             <h1>Nova Empresa</h1>
             <p> A empresa ${nome} foi criada com sucesso!</p>

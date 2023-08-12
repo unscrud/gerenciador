@@ -1,7 +1,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <c:url value="/empresas?acao=criar" var="linkCriarEmpresa" />
-<c:url value="/editaEmpresa" var="linkServletEditaEmpresa" />
+<c:url value="/empresas?acao=editar" var="linkEditarEmpresa" />
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <fmt:formatDate var="dataFormatada" value="${empresa.dataAbertura}" pattern="yyyy-MM-dd" />
 <!DOCTYPE html>
@@ -19,7 +19,7 @@
         </h1>
         
         <form 
-            action="${not empty empresa ? linkServletEditaEmpresa : linkCriarEmpresa}"
+            action="${not empty empresa ? linkEditarEmpresa : linkCriarEmpresa}"
             method="post"
         >
             <c:if test="${not empty empresa}">
