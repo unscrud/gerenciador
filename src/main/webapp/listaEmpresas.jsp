@@ -2,8 +2,8 @@
 <%@page import="dev.unscrud.gerenciador.modelo.Empresa"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<c:url value="/removeEmpresa" var="remover" />
-<c:url value="/buscaEmpresa" var="editar" />
+<c:url value="/empresas?acao=remover" var="remover" />
+<c:url value="/empresas?acao=buscar" var="editar" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
