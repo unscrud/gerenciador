@@ -45,5 +45,7 @@
                 </c:forEach>
             </ul>
         </c:if>
+            
+        <a href="empresas?acao=cadastrar">Criar empresa...</a>
     </body>
 </html>
