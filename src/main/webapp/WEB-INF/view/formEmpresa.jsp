@@ -2,7 +2,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <c:url value="/empresas?acao=criar" var="linkCriarEmpresa" />
 <c:url value="/empresas?acao=editar" var="linkEditarEmpresa" />
-<c:url value="/usuarios?acao=logout" var="linkLogout" />
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <fmt:formatDate var="dataFormatada" value="${empresa.dataAbertura}" pattern="yyyy-MM-dd" />
 <!DOCTYPE html>
@@ -14,9 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        Usuário logado: <strong>${usuarioLogado}</strong> (<a href="${linkLogout}">sair</a>)
-        <br />
-        <br />
+        <c:import url="header.jsp"/>
         
         <h1>
             ${not empty empresa ? "Editar empresa" : "Criar Empresa"}
