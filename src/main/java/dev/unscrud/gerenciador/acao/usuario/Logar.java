@@ -6,6 +6,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class Logar implements Acao{
 
@@ -18,6 +19,8 @@ public class Logar implements Acao{
         boolean usuarioExiste = banco.verificaSeUsuárioESenhaConferem(login,senha);
         
         if (usuarioExiste){
+            HttpSession sessao = request.getSession();
+            sessao.setAttribute("usuarioLogado", login);
             response.sendRedirect("empresas?acao=listar");
         } else {
             response.sendRedirect("usuarios?acao=acessar&msg=erro");
