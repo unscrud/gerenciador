@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "empresas", urlPatterns = {"/empresas"})
 public class EmpresaController extends HttpServlet {
@@ -19,18 +20,23 @@ public class EmpresaController extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         
-        String parametroAcao = StringUtil
-                .CapitalizarPrimeiraLetra(request.getParameter("acao"));
-        
-        String nomeDaClasse = Constantes.ACOES_EMPRESAS + parametroAcao;
-        
-        try {
-            Class classe = Class.forName(nomeDaClasse);
-            Acao acao = (Acao) classe.newInstance();
-            acao.executar(request, response);
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
-            Logger.getLogger(EmpresaController.class.getName()).log(Level.SEVERE, null, ex);
+        HttpSession sessao = request.getSession();
+        boolean usuarioNaoEstaLogado = sessao.getAttribute("usuarioLogado") == null;
+        if (usuarioNaoEstaLogado) {
+            response.sendRedirect("usuarios?acao=acessar&msg=erro");
+        } else {
+            String parametroAcao = StringUtil
+                    .CapitalizarPrimeiraLetra(request.getParameter("acao"));
+
+            String nomeDaClasse = Constantes.ACOES_EMPRESAS + parametroAcao;
+
+            try {
+                Class classe = Class.forName(nomeDaClasse);
+                Acao acao = (Acao) classe.newInstance();
+                acao.executar(request, response);
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+                Logger.getLogger(EmpresaController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
-
 }
