@@ -1,11 +1,7 @@
 package dev.unscrud.gerenciador.servlet;
 
-import dev.unscrud.gerenciador.acao.Acao;
 import dev.unscrud.gerenciador.util.Constantes;
-import dev.unscrud.gerenciador.util.StringUtil;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,18 +21,7 @@ public class EmpresaController extends HttpServlet {
         if (usuarioNaoEstaLogado) {
             response.sendRedirect("usuarios?acao=acessar&msg=erro");
         } else {
-            String parametroAcao = StringUtil
-                    .CapitalizarPrimeiraLetra(request.getParameter("acao"));
-
-            String nomeDaClasse = Constantes.ACOES_EMPRESAS + parametroAcao;
-
-            try {
-                Class classe = Class.forName(nomeDaClasse);
-                Acao acao = (Acao) classe.newInstance();
-                acao.executar(request, response);
-            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
-                Logger.getLogger(EmpresaController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            PreparaAcao.executar(Constantes.ACOES_EMPRESAS, request,response);
         }
     }
 }
