@@ -38,4 +38,9 @@ public class Banco {
                 .findFirst()
                 .orElse(null);
     }
+
+    public boolean verificaSeUsuárioESenhaConferem(String login, String senha) {
+        Usuario usuario = new Usuario(login, senha);
+        return Banco.usuarios.stream().anyMatch(u -> u.equals(usuario));
+    }
 }
