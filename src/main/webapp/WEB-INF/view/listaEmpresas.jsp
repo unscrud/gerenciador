@@ -12,6 +12,10 @@
         <title>Empresas</title>
     </head>
     <body>
+        Usuário logado: <strong>${usuarioLogado}</strong>
+        <br />
+        <br />
+        
         <c:if test="${not empty param.empresaEditada}">
             <h1>Editar Empresa</h1>
             <p> A empresa ${param.empresaEditada} foi modificada com sucesso!</p>

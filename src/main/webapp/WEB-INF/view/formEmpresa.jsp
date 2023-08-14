@@ -13,6 +13,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
+        Usuário logado: <strong>${usuarioLogado}</strong>
+        <br />
+        <br />
         
         <h1>
             ${not empty empresa ? "Editar empresa" : "Criar Empresa"}
