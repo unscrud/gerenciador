@@ -4,6 +4,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:url value="/empresas?acao=remover" var="remover" />
 <c:url value="/empresas?acao=buscar" var="editar" />
+<c:url value="/usuarios?acao=logout" var="linkLogout" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,7 +13,7 @@
         <title>Empresas</title>
     </head>
     <body>
-        Usuário logado: <strong>${usuarioLogado}</strong>
+        Usuário logado: <strong>${usuarioLogado}</strong> (<a href="${linkLogout}">sair</a>)
         <br />
         <br />
         
