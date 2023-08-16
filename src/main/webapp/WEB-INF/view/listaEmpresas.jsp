@@ -47,5 +47,9 @@
         </c:if>
             
         <a href="empresas?acao=cadastrar">Criar empresa...</a>
+        <br />
+        Emitir lista em: 
+        <a href="empresas?acao=listar&format=json">JSON</a> |
+        <a href="empresas?acao=listar&format=xml">XML</a>
     </body>
 </html>

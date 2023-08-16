@@ -1,7 +1,8 @@
 package dev.unscrud.gerenciador.acao.empresa;
 
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.google.gson.Gson;
-import com.thoughtworks.xstream.XStream;
+import com.google.gson.GsonBuilder;
 import dev.unscrud.gerenciador.acao.Acao;
 import dev.unscrud.gerenciador.modelo.Banco;
 import dev.unscrud.gerenciador.modelo.Empresa;
@@ -19,7 +20,7 @@ public class Listar implements Acao {
     @Override
     public void executar(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
-                Banco banco = new Banco();
+        Banco banco = new Banco();
         List<Empresa> empresas = banco.getEmpresas();
         
         String formato = request.getParameter("format");
@@ -39,9 +40,8 @@ public class Listar implements Acao {
                     contentType = "application/json";
                     break;
                 case XML:
-                    XStream xStream = new XStream();
-                    xStream.alias("empresa", Empresa.class);
-                    content = xStream.toXML(empresas);
+                    XmlMapper xmlMapper = new XmlMapper();
+                    content = xmlMapper.writeValueAsString(empresas);
                     contentType = "application/xml";
                     break;
             }
